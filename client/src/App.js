@@ -1,13 +1,11 @@
 import './App.scss';
-import Routes from './routes/Routes';
+import { useRoutes } from 'react-router-dom';
+import routes from './routes/Routes';
 import Themer from './theme/index';
 
 function App() {
-  return (
-    <Themer>
-      <Routes />
-    </Themer>
-  );
+  const routing = useRoutes(routes);
+  return <Themer>{routing}</Themer>;
 }
 
 export default App;

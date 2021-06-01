@@ -1,70 +1,38 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import {
-  HashRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
-import HelloWorld from '../pages/HelloWorld';
+import AuthLayout from '../layout/Auth';
+import Login from '../pages/login';
 
-function Routes() {
-  // let location = useLocation();
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <HelloWorld />
-        </Route>
-      </Switch>
-    </Router>
-  );
-}
-export default Routes;
-
-// Define public Route
-
-function PublicRoute({ children, ...rest }) {
-  const login = localStorage.getItem('login') === 'true';
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        login ? (
-          <Redirect
-            to={{
-              pathname: '/',
-              state: { from: location },
-            }}
-          />
-        ) : (
-          children
-        )
-      }
-    />
-  );
-}
-
-// Define Private Route
-function PrivateRoute({ children, ...rest }) {
-  const login = localStorage.getItem('login') === 'true';
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        login ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
-  );
-}
+const routes = [
+  // {
+  //   path: 'app',
+  //   element: (
+  //     <ProtectedRoute>
+  //       <DashboardLayout />
+  //     </ProtectedRoute>
+  //   ),
+  //   children: [
+  //     { path: 'account', element: <Account /> },
+  //     { path: 'customers', element: <CustomerList /> },
+  //     { path: 'dashboard', element: <Dashboard /> },
+  //     { path: 'products', element: <ProductList /> },
+  //     { path: 'settings', element: <Settings /> },
+  //     { path: '*', element: <Navigate to="/404" /> },
+  //   ],
+  // },
+  // {
+  //   path: '/home',
+  //   element: <Landing />,
+  // },
+  {
+    path: '/',
+    element: <AuthLayout />,
+    children: [
+      { path: 'login', element: <Login /> },
+      // { path: 'register', element: <Register /> },
+      // { path: '404', element: <NotFound /> },
+      // { path: '/', element: <Navigate to="/app/dashboard" /> },
+      // { path: '*', element: <Navigate to="/404" /> },
+    ],
+  },
+];
+export default routes;
