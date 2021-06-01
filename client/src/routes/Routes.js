@@ -8,7 +8,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import HelloWorld from '../components/HelloWorld';
+import HelloWorld from '../pages/HelloWorld';
 
 function Routes() {
   // let location = useLocation();
