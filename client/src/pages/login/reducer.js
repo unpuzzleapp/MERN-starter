@@ -1,22 +1,63 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-const helloWorldSlice = createSlice({
-  name: 'helloWorld',
+const loginSlice = createSlice({
+  name: 'login',
   initialState: {
-    value: 'Hello World',
+    isSuccess: false,
+    isFailed: false,
+    isLoading: false,
+    isLogout: false,
+    data: {},
   },
   reducers: {
-    changeValue: () => {},
-    setValue: (state, action) => {
+    login: (state) => {
       return {
         ...state,
-        value: action.payload,
+        isLoading: true,
+        isLogout: false,
+      };
+    },
+    register: (state) => {
+      return {
+        ...state,
+        isLoading: true,
+        isLogout: false,
+      };
+    },
+    logout: (state) => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      return {
+        ...state,
+        isLogout: true,
+      };
+    },
+    loginSuccess: (state, action) => {
+      localStorage.setItem('token', action.payload.data.token);
+      localStorage.setItem('role', action.payload.data.role);
+      return {
+        ...state,
+        data: action.payload.data,
+        isSuccess: true,
+        isFailed: false,
+        isLogout: false,
+        isLoading: false,
+      };
+    },
+    loginFailed: (state) => {
+      return {
+        ...state,
+        isSuccess: false,
+        isFailed: true,
+        isLogout: false,
+        isLoading: false,
       };
     },
   },
 });
 
-export const { changeValue, setValue } = helloWorldSlice.actions;
+export const { login, loginFailed, loginSuccess, register, logout } =
+  loginSlice.actions;
 
-export default helloWorldSlice.reducer;
+export default loginSlice.reducer;

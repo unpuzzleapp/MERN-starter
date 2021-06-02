@@ -1,5 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import helloWorldReducer from '../../pages/login/reducer';
+// eslint-disable-next-line import/no-named-as-default
+import login from '../../pages/login/reducer';
+import list from '../../pages/list/reducer';
 
-const reducer = combineReducers({ helloWorldReducer });
+const reducer = combineReducers({ login, list });
 export default reducer;

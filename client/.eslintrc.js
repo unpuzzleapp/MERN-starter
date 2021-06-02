@@ -18,6 +18,10 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*.test.ts', '**/*.test.tsx'] },
+    ],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     quotes: [1, 'single', 'avoid-escape'],

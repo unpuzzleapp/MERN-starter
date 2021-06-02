@@ -8,6 +8,18 @@ const AuthSchema = new Schema({
         required: true,
         index: { unique: true }
     },
+    phone: {
+        type: String,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
     role: {
         type: String,
         required: true,
@@ -25,7 +37,7 @@ const AuthSchema = new Schema({
     /**
      * Add more fields as desired
      */
-})
+}, { timestamps: true })
 
 // encrypt password before storing it in database
 AuthSchema.pre('save', function(next) {
