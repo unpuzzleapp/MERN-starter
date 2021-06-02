@@ -1,9 +1,10 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { ProtectedRoute } from './Type';
+import { ProtectedRoute, AdminOnlyRoute } from './Type';
 import AuthLayout from '../layout/Auth';
 import DashboardLayout from '../layout/DashboardLayout';
 import Login from '../pages/login';
+import Register from '../pages/login/register';
 import UserList from '../pages/list';
 
 const routes = [
@@ -14,7 +15,16 @@ const routes = [
         <DashboardLayout />
       </ProtectedRoute>
     ),
-    children: [{ path: 'users', element: <UserList /> }],
+    children: [
+      {
+        path: 'users',
+        element: (
+          <AdminOnlyRoute>
+            <UserList />
+          </AdminOnlyRoute>
+        ),
+      },
+    ],
   },
   // {
   //   path: '/home',
@@ -25,7 +35,7 @@ const routes = [
     element: <AuthLayout />,
     children: [
       { path: 'login', element: <Login /> },
-      // { path: 'register', element: <Register /> },
+      { path: 'register', element: <Register /> },
       // { path: '404', element: <NotFound /> },
       { path: '/', element: <Navigate to="/app/users" /> },
       // { path: '*', element: <Navigate to="/404" /> },

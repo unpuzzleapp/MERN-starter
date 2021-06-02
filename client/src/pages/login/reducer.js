@@ -16,7 +16,15 @@ const loginSlice = createSlice({
         isLoading: true,
       };
     },
+    register: (state) => {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    },
     loginSuccess: (state, action) => {
+      localStorage.setItem('token', action.payload.data.token);
+      localStorage.setItem('role', action.payload.data.role);
       return {
         ...state,
         data: action.payload.data,
@@ -36,6 +44,7 @@ const loginSlice = createSlice({
   },
 });
 
-export const { login, loginFailed, loginSuccess } = loginSlice.actions;
+export const { login, loginFailed, loginSuccess, register } =
+  loginSlice.actions;
 
 export default loginSlice.reducer;

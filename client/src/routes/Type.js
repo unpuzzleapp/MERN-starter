@@ -9,4 +9,12 @@ export const ProtectedRoute = ({ children }) => {
   return <Navigate to="/login" />;
 };
 
+export const AdminOnlyRoute = ({ children }) => {
+  const role = localStorage.getItem('role');
+  console.log({ role });
+  if (role === 'owner') {
+    return children;
+  }
+  return <Navigate to="/login" />;
+};
 export default {};
