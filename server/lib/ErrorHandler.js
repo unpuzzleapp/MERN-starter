@@ -8,7 +8,21 @@ const NoUserFound = () => {
   err.status = 404;
   throw err;
 };
+
+const UserAlreadyExist = () => {
+  const err = new Error("User already exist!");
+  err.status = 404;
+  throw err;
+};
+const ValidationFail = () => {
+  const err = new Error('Validation Fails');
+  err.status = 400;
+  throw err;
+}
+
 module.exports = {
   NoDataAvailable,
-  NoUserFound
+  NoUserFound,
+  ValidationFail,
+  UserAlreadyExist
 };
