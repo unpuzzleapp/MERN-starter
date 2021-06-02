@@ -43,7 +43,7 @@ class AuthController {
         next(err, req, res, next);
         return;
       }
-      const { emailId, password, role } = req.body;
+      const { emailId, password, role, name, address, phone } = req.body;
       const checker = await Auth.findOne({ emailId });
       if (checker) {
         UserAlreadyExist();
@@ -51,7 +51,10 @@ class AuthController {
       const user = new Auth({
         emailId,
         password,
-        role
+        role,
+        name,
+        address,
+        phone
       });
       await user.save();
       const token = Authentication.generateToken(user.role, { id: user._id });

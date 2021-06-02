@@ -1,22 +1,41 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-const helloWorldSlice = createSlice({
-  name: 'helloWorld',
+const loginSlice = createSlice({
+  name: 'login',
   initialState: {
-    value: 'Hello World',
+    isSuccess: false,
+    isFailed: false,
+    isLoading: false,
+    data: {},
   },
   reducers: {
-    changeValue: () => {},
-    setValue: (state, action) => {
+    login: (state) => {
       return {
         ...state,
-        value: action.payload,
+        isLoading: true,
+      };
+    },
+    loginSuccess: (state, action) => {
+      return {
+        ...state,
+        data: action.payload.data,
+        isSuccess: true,
+        isFailed: false,
+        isLoading: false,
+      };
+    },
+    loginFailed: (state) => {
+      return {
+        ...state,
+        isSuccess: false,
+        isFailed: true,
+        isLoading: false,
       };
     },
   },
 });
 
-export const { changeValue, setValue } = helloWorldSlice.actions;
+export const { login, loginFailed, loginSuccess } = loginSlice.actions;
 
-export default helloWorldSlice.reducer;
+export default loginSlice.reducer;

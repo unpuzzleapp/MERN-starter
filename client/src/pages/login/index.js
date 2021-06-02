@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
@@ -11,14 +13,26 @@ import {
   Link,
   TextField,
   Typography,
+  CircularProgress,
 } from '@material-ui/core';
 import FacebookIcon from '../../icon/Facebook';
 import GoogleIcon from '../../icon/Google';
 import { ColumnContainer } from '../../common/uielements/collection.style';
+import { login } from './reducer';
 
-const Login = () => {
+const Login = ({ auth, actions }) => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (auth.isSuccess) {
+      navigate('/app/users', { replace: true });
+    }
+  }, [auth]);
+
+  const onSubmit = (values, { setSubmitting }) => {
+    actions.login(values);
+    setSubmitting(false);
+  };
   return (
     <>
       <Helmet>
@@ -32,19 +46,17 @@ const Login = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'demo@devias.io',
+              emailId: 'demo@devias.io',
               password: 'Password123',
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string()
+              emailId: Yup.string()
                 .email('Must be a valid email')
                 .max(255)
                 .required('Email is required'),
               password: Yup.string().max(255).required('Password is required'),
             })}
-            onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
-            }}
+            onSubmit={onSubmit}
           >
             {({
               errors,
@@ -108,16 +120,16 @@ const Login = () => {
                   </Typography>
                 </Box>
                 <TextField
-                  error={Boolean(touched.email && errors.email)}
+                  error={Boolean(touched.emailId && errors.emailId)}
                   fullWidth
-                  helperText={touched.email && errors.email}
+                  helperText={touched.emailId && errors.emailId}
                   label="Email Address"
                   margin="normal"
-                  name="email"
+                  name="emailId"
                   onBlur={handleBlur}
                   onChange={handleChange}
                   type="email"
-                  value={values.email}
+                  value={values.emailId}
                   variant="outlined"
                 />
                 <TextField
@@ -142,7 +154,11 @@ const Login = () => {
                     type="submit"
                     variant="contained"
                   >
-                    Sign in now
+                    {auth.isLoading ? (
+                      <CircularProgress size={20} color="secondary" />
+                    ) : (
+                      'Sign in now'
+                    )}
                   </Button>
                 </Box>
                 <Typography color="textSecondary" variant="body1">
@@ -160,4 +176,15 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state) => ({
+  auth: state.login,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: {
+      login: () => dispatch(login()),
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
