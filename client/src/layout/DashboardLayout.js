@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import DashboardNavbar from './DashboardNavbar';
-import DashboardSidebar from './DashboardSidebar';
 
 const DashboardLayoutRoot = styled('div')({
   // backgroundColor: theme.palette.background.default,
@@ -35,15 +34,9 @@ const DashboardLayoutContent = styled('div')({
 });
 
 const DashboardLayout = () => {
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
-
   return (
     <DashboardLayoutRoot>
-      <DashboardNavbar onMobileNavOpen={() => setMobileNavOpen(true)} />
-      <DashboardSidebar
-        onMobileClose={() => setMobileNavOpen(false)}
-        openMobile={isMobileNavOpen}
-      />
+      <DashboardNavbar />
       <DashboardLayoutWrapper>
         <DashboardLayoutContainer>
           <DashboardLayoutContent>
