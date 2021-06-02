@@ -8,6 +8,7 @@ const helmet = require('helmet');
 require('dotenv').config()
 global.__logger = require('./config/logger');
 const indexRouter = require('./routes/index');
+const mongoose = require('./config/database/mongoose/config/mongoose.config');
 
 const app = express();
 
@@ -41,4 +42,8 @@ app.use(function(err, req, res, next) {
     error: true
   });
 });
+
+mongoose.connect(process.env.MONGODB_URL)
+
+
 module.exports = app;
