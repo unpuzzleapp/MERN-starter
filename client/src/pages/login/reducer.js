@@ -7,6 +7,7 @@ const loginSlice = createSlice({
     isSuccess: false,
     isFailed: false,
     isLoading: false,
+    isLogout: false,
     data: {},
   },
   reducers: {
@@ -14,12 +15,22 @@ const loginSlice = createSlice({
       return {
         ...state,
         isLoading: true,
+        isLogout: false,
       };
     },
     register: (state) => {
       return {
         ...state,
         isLoading: true,
+        isLogout: false,
+      };
+    },
+    logout: (state) => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('role');
+      return {
+        ...state,
+        isLogout: true,
       };
     },
     loginSuccess: (state, action) => {
@@ -30,6 +41,7 @@ const loginSlice = createSlice({
         data: action.payload.data,
         isSuccess: true,
         isFailed: false,
+        isLogout: false,
         isLoading: false,
       };
     },
@@ -38,13 +50,14 @@ const loginSlice = createSlice({
         ...state,
         isSuccess: false,
         isFailed: true,
+        isLogout: false,
         isLoading: false,
       };
     },
   },
 });
 
-export const { login, loginFailed, loginSuccess, register } =
+export const { login, loginFailed, loginSuccess, register, logout } =
   loginSlice.actions;
 
 export default loginSlice.reducer;

@@ -11,7 +11,6 @@ export const ProtectedRoute = ({ children }) => {
 
 export const AdminOnlyRoute = ({ children }) => {
   const role = localStorage.getItem('role');
-  console.log({ role });
   if (role === 'owner') {
     return children;
   }
