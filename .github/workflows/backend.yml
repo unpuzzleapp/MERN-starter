@@ -33,5 +33,5 @@ jobs:
         env:
           HEROKU_BACKEND_APP_NAME: ${{ secrets.HEROKU_BACKEND_APP_NAME }}
       - name: Push to Heroku
-        run: git subtree push --prefix server heroku main:master
+        run: git subtree push --prefix server heroku main
       
