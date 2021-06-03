@@ -3,7 +3,7 @@ const Auth = require("../../config/database/mongoose/models/Auth");
 const Responser = require("../../lib/Responser");
 const Authentication = require("../../lib/Authentication");
 const { NoUserFound, UserAlreadyExist } = require("../../lib/ErrorHandler");
-const { encrypt } = require("../../lib/encryption");
+const { encrypt } = require("../../lib/Encryption");
 
 class AuthController {
   saveValidation = () => {
