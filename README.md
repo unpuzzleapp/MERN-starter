@@ -55,8 +55,8 @@ This folder will store all your workflows which require automation
     - ...rest are utility files
 
 You can find more details in the below links,
-[Getting started](docs/getting-started.md)
-[Client Getting started](docs/client-getting-started.md)
-[Server Getting started](docs/server-getting-started.md)
-[Add new Seeder](docs/add-new-seeder.md)
-[Middlewares](docs/middlewares.md)
+- [Getting started](docs/getting-started.md)
+- [Client Getting started](docs/client-getting-started.md)
+- [Server Getting started](docs/server-getting-started.md)
+- [Add new Seeder](docs/add-new-seeder.md)
+- [Middlewares](docs/middlewares.md)
