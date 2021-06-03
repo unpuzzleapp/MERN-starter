@@ -18,6 +18,20 @@ const loginSlice = createSlice({
         isLogout: false,
       };
     },
+    getProfile: (state) => {
+      return {
+        ...state,
+        isLoading: true,
+        isLogout: false,
+      };
+    },
+    updateProfile: (state) => {
+      return {
+        ...state,
+        isLoading: true,
+        isLogout: false,
+      };
+    },
     register: (state) => {
       return {
         ...state,
@@ -26,8 +40,8 @@ const loginSlice = createSlice({
       };
     },
     logout: (state) => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('role');
+      // localStorage.removeItem('token');
+      // localStorage.removeItem('role');
       return {
         ...state,
         isLogout: true,
@@ -57,7 +71,14 @@ const loginSlice = createSlice({
   },
 });
 
-export const { login, loginFailed, loginSuccess, register, logout } =
-  loginSlice.actions;
+export const {
+  login,
+  loginFailed,
+  loginSuccess,
+  register,
+  logout,
+  getProfile,
+  updateProfile,
+} = loginSlice.actions;
 
 export default loginSlice.reducer;

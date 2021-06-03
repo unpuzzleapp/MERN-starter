@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+const mongoose = require('../config/database/mongoose/config/mongoose.config');
 const app = require('../app');
 const debug = require('debug')('demo:server');
 const http = require('http');
@@ -27,6 +28,7 @@ const server = http.createServer(app);
 
 server.listen(port);
 __logger.info(`Server is listening at ${port}`)
+mongoose.connect(process.env.MONGODB_URL)
 server.on('error', onError);
 server.on('listening', onListening);
 

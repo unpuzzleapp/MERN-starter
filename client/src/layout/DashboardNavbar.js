@@ -16,7 +16,7 @@ import {
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from './Logo';
-import { logout } from '../pages/login/reducer';
+import { logout } from '../pages/auth/reducer';
 
 const DashboardNavbar = ({ onMobileNavOpen, actions, isLogout, ...rest }) => {
   const [notifications] = useState([]);

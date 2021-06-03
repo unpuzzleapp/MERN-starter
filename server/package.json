@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha",
+    "test": "jest",
     "dev": "nodemon ./bin/www",
     "migration:create": "sequelize migration:generate",
     "migration:up": "sequelize db:migrate",
@@ -36,8 +36,12 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "jest": "^27.0.3",
     "mocha": "^8.3.2",
     "nodemon": "^2.0.7",
     "supertest": "^3.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
