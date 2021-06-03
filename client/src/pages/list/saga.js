@@ -1,9 +1,10 @@
 import { put } from 'redux-saga/effects';
 import axios from 'axios';
 import { getListFailed, getListSuccess } from './reducer';
+import { USER_FETCH_URL } from '../../constant/apiRoute';
 
 const getList = async () => {
-  const data = await axios.get('http://localhost:4000/api/auth/v1');
+  const data = await axios.get(USER_FETCH_URL);
   return data;
 };
 

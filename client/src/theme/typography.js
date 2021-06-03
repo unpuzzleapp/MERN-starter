@@ -1,13 +1,13 @@
 export default {
   header: {
     fontWeight: 600,
-    fontSize: 55,
+    fontSize: 45,
     letterSpacing: '-0.24px',
     margin: 'auto',
   },
   h1: {
     fontWeight: 500,
-    fontSize: 35,
+    fontSize: 25,
     letterSpacing: '-0.24px',
   },
   h2: {

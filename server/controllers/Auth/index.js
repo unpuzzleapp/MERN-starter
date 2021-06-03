@@ -3,6 +3,7 @@ const Auth = require("../../config/database/mongoose/models/Auth");
 const Responser = require("../../lib/Responser");
 const Authentication = require("../../lib/Authentication");
 const { NoUserFound, UserAlreadyExist } = require("../../lib/ErrorHandler");
+const { encrypt } = require("../../lib/encryption");
 
 class AuthController {
   saveValidation = () => {
@@ -15,10 +16,7 @@ class AuthController {
         .exists()
         .isString()
         .withMessage("Invalid value for password"),
-      body("role")
-        .exists()
-        .isString()
-        .withMessage("Invalid value for role"),
+      body("role").exists().isString().withMessage("Invalid value for role"),
     ];
   };
   loginValidation = () => {
@@ -54,11 +52,16 @@ class AuthController {
         role,
         name,
         address,
-        phone
+        phone,
       });
       await user.save();
       const token = Authentication.generateToken(user.role, { id: user._id });
-      return Responser.success(200, "User saved Successful",{token, role}, res);
+      return Responser.success(
+        200,
+        "User saved Successful",
+        { token, role },
+        res
+      );
     } catch (error) {
       return Responser.failed(error, req, res, next);
     }
@@ -81,7 +84,12 @@ class AuthController {
       const validity = await user.comparePassword(password);
       const token = Authentication.generateToken(user.role, { id: user._id });
       if (validity) {
-        return Responser.success(200, "Login Successful", {token, role: user.role}, res);
+        return Responser.success(
+          200,
+          "Login Successful",
+          { token, role: user.role },
+          res
+        );
       }
       __logger.warn("login failed", { emailId });
       NoUserFound();
@@ -110,5 +118,65 @@ class AuthController {
       return Responser.failed(error, req, res, next);
     }
   };
+
+  getProfile = async (req, res) => {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        const err = new Error("Validation Failed");
+        err.status = 400;
+        next(err, req, res, next);
+        return;
+      }
+      const user = await Auth.findOne({ _id: req.user.id }, {password: 0}).lean();
+      if (!user) {
+        NoUserFound();
+      }
+      return Responser.success(200, "fetch Successful", user, res);
+    } catch (error) {
+      __logger.error(error.toString());
+      return Responser.failed(error, req, res, next);
+    }
+  };
+
+  updateProfile = async(req, res) =>{
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        const err = new Error("Validation Failed");
+        err.status = 400;
+        next(err, req, res, next);
+        return;
+      }
+      const user = await Auth.findOneAndUpdate({ _id: req.user.id }, req.body).lean();
+      if (!user) {
+        NoUserFound();
+      }
+      return Responser.success(200, "fetch Successful", user, res);
+    } catch (error) {
+      __logger.error(error.toString());
+      return Responser.failed(error, req, res, next);
+    }
+  };
+
+  seedAdmin = async() => {
+    const data = {
+      emailId: process.env.ADMIN_EMAIL_ID,
+      password: process.env.ADMIN_PASSWORD,
+      role: 'admin',
+      address: process.env.ADMIN_ADDRESS || '',
+      phone: process.env.ADMIN_PHONE || '',
+      name: process.env.ADMIN_NAME || '',
+    }
+    const checker = await Auth.findOne({emailId: process.env.ADMIN_EMAIL_ID});
+    if(checker){
+      return true;
+    }
+    data.password = await encrypt(data.password)
+    
+    const user = new Auth(data);
+    await user.save();
+    return true;  
+  }
 }
 module.exports = new AuthController();

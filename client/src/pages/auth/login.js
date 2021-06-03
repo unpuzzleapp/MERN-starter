@@ -19,13 +19,14 @@ import FacebookIcon from '../../icon/Facebook';
 import GoogleIcon from '../../icon/Google';
 import { ColumnContainer } from '../../common/uielements/collection.style';
 import { login } from './reducer';
+import { USERS_ROUTE } from '../../constant/routes';
 
 const Login = ({ auth, actions }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     if (auth.isSuccess) {
-      navigate('/app/users', { replace: true });
+      navigate(USERS_ROUTE, { replace: true });
     }
   }, [auth]);
 
@@ -46,8 +47,8 @@ const Login = ({ auth, actions }) => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              emailId: 'demo@devias.io',
-              password: 'demo@devias.io',
+              emailId: 'piyushtest@test.com',
+              password: '123456',
             }}
             validationSchema={Yup.object().shape({
               emailId: Yup.string()
@@ -87,7 +88,7 @@ const Login = ({ auth, actions }) => {
                       fullWidth
                       startIcon={<FacebookIcon />}
                       onClick={handleSubmit}
-                      size="large"
+                      size="medium"
                       variant="contained"
                     >
                       Login with Facebook
@@ -98,7 +99,7 @@ const Login = ({ auth, actions }) => {
                       fullWidth
                       startIcon={<GoogleIcon />}
                       onClick={handleSubmit}
-                      size="large"
+                      size="medium"
                       variant="contained"
                     >
                       Login with Google
@@ -150,7 +151,7 @@ const Login = ({ auth, actions }) => {
                     color="primary"
                     disabled={isSubmitting}
                     fullWidth
-                    size="large"
+                    size="medium"
                     type="submit"
                     variant="contained"
                   >

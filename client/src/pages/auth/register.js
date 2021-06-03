@@ -19,13 +19,14 @@ import FacebookIcon from '../../icon/Facebook';
 import GoogleIcon from '../../icon/Google';
 import { ColumnContainer } from '../../common/uielements/collection.style';
 import { register } from './reducer';
+import { LOGIN_ROUTE, USERS_ROUTE } from '../../constant/routes';
 
 const Login = ({ auth, actions }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     if (auth.isSuccess) {
-      navigate('/app/users', { replace: true });
+      navigate(USERS_ROUTE, { replace: true });
     }
   }, [auth]);
 
@@ -95,7 +96,7 @@ const Login = ({ auth, actions }) => {
                       fullWidth
                       startIcon={<FacebookIcon />}
                       onClick={handleSubmit}
-                      size="large"
+                      size="medium"
                       variant="contained"
                     >
                       Continue with Facebook
@@ -106,7 +107,7 @@ const Login = ({ auth, actions }) => {
                       fullWidth
                       startIcon={<GoogleIcon />}
                       onClick={handleSubmit}
-                      size="large"
+                      size="medium"
                       variant="contained"
                     >
                       Continue with Google
@@ -198,7 +199,7 @@ const Login = ({ auth, actions }) => {
                     color="primary"
                     disabled={isSubmitting}
                     fullWidth
-                    size="large"
+                    size="medium"
                     type="submit"
                     variant="contained"
                   >
@@ -211,7 +212,7 @@ const Login = ({ auth, actions }) => {
                 </Box>
                 <Typography color="textSecondary" variant="body1">
                   have an account?{' '}
-                  <Link component={RouterLink} to="/login" variant="h6">
+                  <Link component={RouterLink} to={LOGIN_ROUTE} variant="h6">
                     Sign in
                   </Link>
                 </Typography>
