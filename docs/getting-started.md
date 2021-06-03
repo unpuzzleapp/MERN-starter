@@ -27,7 +27,7 @@ To keep this project running on your local system you need to
 
 ### Environment variables
 **Client**
-- SECRET_KEY - To hash your password
+- REACT_APP_SECRET_KEY - To hash your password
 
 **Server**
 - PORT - port number
