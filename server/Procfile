@@ -1,2 +1,0 @@
-release: npx sequelize-cli db:migrate
-seeders: npx sequelize-cli db:seed:all
