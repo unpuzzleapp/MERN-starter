@@ -3,7 +3,7 @@ name: Frontend Deployment
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'client/**'
     
@@ -33,4 +33,4 @@ jobs:
         env:
           HEROKU_FRONTEND_APP_NAME: ${{ secrets.HEROKU_FRONTEND_APP_NAME }}
       - name: Push to Heroku
-        run: git subtree push --prefix client heroku master
+        run: git subtree push --prefix client heroku main:master
