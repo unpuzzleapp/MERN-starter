@@ -96,7 +96,7 @@ const Login = ({ auth, actions }) => {
                       fullWidth
                       startIcon={<FacebookIcon />}
                       onClick={handleSubmit}
-                      size="large"
+                      size="medium"
                       variant="contained"
                     >
                       Continue with Facebook
@@ -107,7 +107,7 @@ const Login = ({ auth, actions }) => {
                       fullWidth
                       startIcon={<GoogleIcon />}
                       onClick={handleSubmit}
-                      size="large"
+                      size="medium"
                       variant="contained"
                     >
                       Continue with Google
@@ -199,7 +199,7 @@ const Login = ({ auth, actions }) => {
                     color="primary"
                     disabled={isSubmitting}
                     fullWidth
-                    size="large"
+                    size="medium"
                     type="submit"
                     variant="contained"
                   >
