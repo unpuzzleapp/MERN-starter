@@ -99,7 +99,7 @@ class AuthController {
     }
   };
 
-  getAllUser = async (req, res) => {
+  getAllUser = async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -119,7 +119,7 @@ class AuthController {
     }
   };
 
-  getProfile = async (req, res) => {
+  getProfile = async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
