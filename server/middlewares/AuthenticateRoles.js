@@ -9,7 +9,7 @@ class AuthRoles {
     try {
       let decode = await Authentication.authenticate(
         req.headers.authorization,
-        role
+        role 
       );
       req.user = decode;
       next();

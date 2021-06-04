@@ -99,7 +99,7 @@ class AuthController {
     }
   };
 
-  getAllUser = async (req, res) => {
+  getAllUser = async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -119,7 +119,7 @@ class AuthController {
     }
   };
 
-  getProfile = async (req, res) => {
+  getProfile = async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -129,7 +129,7 @@ class AuthController {
         return;
       }
       const user = await Auth.findOne({ _id: req.user.id }, {password: 0}).lean();
-      if (!user) {
+      if (!user) { 
         NoUserFound();
       }
       return Responser.success(200, "fetch Successful", user, res);

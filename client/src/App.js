@@ -12,7 +12,7 @@ function App() {
   // initialize the axios
   requestInterceptor();
   const routing = useRoutes(routes);
-  return <Themer>{routing}</Themer>;
+  return <Themer id="theme-selector">{routing}</Themer>;
 }
 
 export default App;
