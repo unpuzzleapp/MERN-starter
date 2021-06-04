@@ -28,6 +28,7 @@ To keep this project running on your local system you need to
 ### Environment variables
 **Client**
 - REACT_APP_SECRET_KEY - To hash your password
+- REACT_APP_DEFAULT_AXIOS_URL - To store your backend url
 
 **Server**
 - PORT - port number
