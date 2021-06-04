@@ -8,6 +8,7 @@ class DatabaseConfig {
           useNewUrlParser: true,
           useUnifiedTopology: true,
           useFindAndModify: false,
+          useCreateIndex: true,
         })
         .then(async () => {
           try {
