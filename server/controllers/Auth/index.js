@@ -129,7 +129,7 @@ class AuthController {
         return;
       }
       const user = await Auth.findOne({ _id: req.user.id }, {password: 0}).lean();
-      if (!user) {
+      if (!user) { 
         NoUserFound();
       }
       return Responser.success(200, "fetch Successful", user, res);
