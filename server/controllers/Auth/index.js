@@ -127,7 +127,7 @@ class AuthController {
         err.status = 400;
         next(err, req, res, next);
         return;
-      }
+      } 
       const user = await Auth.findOne({ _id: req.user.id }, {password: 0}).lean();
       if (!user) {
         NoUserFound();
