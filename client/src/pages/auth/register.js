@@ -52,8 +52,8 @@ const Login = ({ auth, actions }) => {
               name: '',
               phone: '',
               address: '',
-              emailId: 'demo@devias.io',
-              password: 'Password123',
+              emailId: '',
+              password: '',
             }}
             validationSchema={Yup.object().shape({
               emailId: Yup.string()

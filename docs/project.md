@@ -1,6 +1,9 @@
 ## Project Details
 Since this is a starter template there are no advance feature included
 
+You will be recieving video on overall experince of project
+To check manually you can directly login into the project with the provided credentials
+
 Below is the list of item included and excluded
 
 ### Features Present
@@ -26,4 +29,5 @@ This icons and options are present and the feature can be build on top of that
 - Login and signup with Facebook and Google
 - Notification won't be working
 - Enhanced form validation
+- Error handling for APIs [Skeleton is present]
 
