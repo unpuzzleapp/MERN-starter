@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { LOGIN_ROUTE, PROFILE_ROUTE } from '../constant/routes';
 
 export const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('authToken');
   if (token) {
     return children;
   }

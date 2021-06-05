@@ -1,6 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
+const storeDataIntoLocalStorage = ({ token, role }) => {
+  if (token) localStorage.setItem('authToken', token);
+  if (role) localStorage.setItem('role', role);
+};
+
 const loginSlice = createSlice({
   name: 'login',
   initialState: {
@@ -40,7 +45,7 @@ const loginSlice = createSlice({
       };
     },
     logout: (state) => {
-      localStorage.removeItem('token');
+      localStorage.removeItem('authToken');
       localStorage.removeItem('role');
       return {
         ...state,
@@ -48,8 +53,7 @@ const loginSlice = createSlice({
       };
     },
     loginSuccess: (state, action) => {
-      localStorage.setItem('token', action.payload.data.token);
-      localStorage.setItem('role', action.payload.data.role);
+      storeDataIntoLocalStorage(action.payload.data);
       return {
         ...state,
         data: action.payload.data,

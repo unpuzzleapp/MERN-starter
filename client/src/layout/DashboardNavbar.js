@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   AppBar,
@@ -17,14 +17,16 @@ import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from './Logo';
 import { logout } from '../pages/auth/reducer';
+import { LOGIN_ROUTE } from '../constant/routes';
 
 const DashboardNavbar = ({ onMobileNavOpen, actions, isLogout, ...rest }) => {
   const [notifications] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLogout && actions.test) {
-      navigate('/', { replace: true });
+    if (isLogout) {
+      window.location.replace(LOGIN_ROUTE);
+      // navigate('/', { replace: true });
     }
   }, [isLogout]);
 
