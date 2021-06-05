@@ -8,6 +8,9 @@ import Register from '../pages/auth/register';
 import UserList from '../pages/list';
 import Profile from '../pages/auth/profile';
 import { USERS_ROUTE } from '../constant/routes';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const routes = [
   {
