@@ -9,7 +9,7 @@ Other than the common stack we are following we have made few things as a must n
 - Configure the code to have a modularity
 - Write test cases for all the unit coverage
 
-##Folder structure
+## Folder structure
 Here you can find more exhaustive coverage for the folder structures
 
 ### Docs
@@ -55,8 +55,10 @@ This folder will store all your workflows which require automation
     - ...rest are utility files
 
 You can find more details in the below links,
+- [Project Details](docs/project.md)
 - [Getting started](docs/getting-started.md)
 - [Client Getting started](docs/client-getting-started.md)
 - [Server Getting started](docs/server-getting-started.md)
 - [Add new Seeder](docs/add-new-seeder.md)
 - [Middlewares](docs/middlewares.md)
+- [Workflow](docs/workflow.md)
