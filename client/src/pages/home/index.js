@@ -4,8 +4,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import HeaderAnimation from '../images/svg-assets/unpuzzle-header';
-import ButtonArrow from '../components/layout/ButtonArrow';
+import HeaderAnimation from '../../icon/UnPuzzleHeader';
+import ButtonArrow from '../../common/component/ButtonArrow';
 
 const useStyles = makeStyles((theme) => ({
   animation: {

@@ -159,7 +159,12 @@ const Navbar = (props) => {
   };
 
   const menuOptions = [
-    { name: 'Tutoring', link: '/tutoring', activeIndex: 1, selectedIndex: 0 },
+    {
+      name: 'Tutoring',
+      link: '/tutoring',
+      activeIndex: 1,
+      selectedIndex: 0,
+    },
     {
       name: 'Grade 6 to Grade 12',
       link: '/gradeschool',
@@ -198,7 +203,7 @@ const Navbar = (props) => {
       activeIndex: 4,
     },
     { name: 'Login', link: '/login', activeIndex: 5 },
-    { name: 'Signup', link: '/signup', activeIndex: 6 },
+    { name: 'Signup', link: '/register', activeIndex: 6 },
   ];
 
   useEffect(() => {
@@ -244,7 +249,7 @@ const Navbar = (props) => {
         color="secondary"
         className={classes.button}
         component={Link}
-        to="/bookasession"
+        to="/bookASession"
       >
         Book A Tutoring Session
       </Button>

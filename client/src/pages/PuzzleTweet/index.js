@@ -1,39 +1,33 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState, Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import Puzzlepiece from '../components/puzzlepiece/Puzzlepiece';
-import Profile from '../components/profile/Profile';
-import Puzzle from '../components/puzzlepiece/Puzzle';
-import PuzzlepieceSkeleton from '../util/PuzzlepieceSkeleton';
-import { getPuzzlepieces } from '../redux/actions/dataActions';
-
-const config = require('../aws/api/config.json');
-const useStyles = makeStyles((theme) => ({
-  pushDown: {
-    height: '2000px',
-  },
-}));
+import { AWS_CONFIG } from '../../constant/apiRoute';
+import Puzzlepiece from '../../components/unpuzzle/Puzzlepiece';
+import Profile from '../../components/profile/Profile';
+import PuzzlepieceSkeleton from '../../common/component/PuzzlepieceSkeleton';
+// import { getPuzzlepieces } from '../redux/actions/dataActions';
 
 const PuzzleTweet = (props) => {
   const [puzzles, setPuzzles] = useState([]);
 
   const fetchPuzzles = async () => {
     try {
-      const res = await axios.get(`${config.api.invokeUrl}/puzzle`);
+      const res = await axios.get(`${AWS_CONFIG}/puzzle`);
       setPuzzles(res.data);
     } catch (err) {
-      console.log(`An error has occured ${err}`);
+      console.log(`An error has occured ${err} ${puzzles}`);
     }
   };
 
   useEffect(() => {
     fetchPuzzles();
-    props.getPuzzlepieces();
+    // props.getPuzzlepieces();
   }, []);
-  const { puzzlepieces, loading } = props.data;
-  let recentPuzzlepiecesMarkup = !loading ? (
+  const { puzzlepieces = [], loading } = props.data;
+  const recentPuzzlepiecesMarkup = !loading ? (
     puzzlepieces.map((puzzlepiece) => (
       <Puzzlepiece key={puzzlepiece.puzzlepieceId} puzzlepiece={puzzlepiece} />
     ))
@@ -41,20 +35,7 @@ const PuzzleTweet = (props) => {
     <PuzzlepieceSkeleton />
   );
   return (
-    <Fragment>
-      <Grid container>
-        {/* Curly braces { } are special syntax in JSX. 
-            It is used to evaluate a JavaScript expression during compilation. 
-            A JavaScript expression can be a variable, function, 
-            an object, or any code that resolves into a value. */}
-        {/* AWS Integration
-            {
-              puzzles && puzzles.length > 0
-              ? puzzles.map(puzzle => <Puzzle puzzleName={puzzle.puzzleName} id={puzzle.id} key={puzzle.id} />)
-              : <div>No puzzle available</div>
-            }   
-          */}
-      </Grid>
+    <Fragment key="puzzle-tweet">
       <Grid container spacing={2}>
         <Grid item sm={8} xs={12}>
           {recentPuzzlepiecesMarkup}
@@ -68,6 +49,8 @@ const PuzzleTweet = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.data,
+  data: state.data || {},
 });
-export default connect(mapStateToProps, { getPuzzlepieces })(PuzzleTweet);
+export default connect(mapStateToProps, { getPuzzlepieces: () => {} })(
+  PuzzleTweet,
+);
