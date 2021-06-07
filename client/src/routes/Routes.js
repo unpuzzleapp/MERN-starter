@@ -7,6 +7,7 @@ import Login from '../pages/auth/login';
 import Register from '../pages/auth/register';
 import UserList from '../pages/list';
 import Profile from '../pages/auth/profile';
+import NotFound from '../pages/error/NotFound';
 import { USERS_ROUTE } from '../constant/routes';
 
 const routes = [
@@ -30,21 +31,18 @@ const routes = [
         path: 'profile',
         element: <Profile />,
       },
+      { path: '*', element: <Navigate to="/404" /> },
     ],
   },
-  // {
-  //   path: '/home',
-  //   element: <Landing />,
-  // },
   {
     path: '/',
     element: <AuthLayout />,
     children: [
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
-      // { path: '404', element: <NotFound /> },
       { path: '/', element: <Navigate to={USERS_ROUTE} /> },
-      // { path: '*', element: <Navigate to="/404" /> },
+      { path: '404', element: <NotFound /> },
+      { path: '*', element: <Navigate to="/404" /> },
     ],
   },
 ];

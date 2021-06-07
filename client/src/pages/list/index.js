@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Box, Container } from '@material-ui/core';
@@ -12,7 +12,7 @@ const CustomerList = ({ actions, list }) => {
     actions.getList();
   }, []);
   return (
-    <>
+    <Fragment key="user-list-page">
       <Helmet>
         <title>Users | Material Kit</title>
       </Helmet>
@@ -29,7 +29,7 @@ const CustomerList = ({ actions, list }) => {
           </Box>
         </Container>
       </Box>
-    </>
+    </Fragment>
   );
 };
 

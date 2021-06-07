@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import NavBar from './NavBar';
@@ -29,17 +29,26 @@ const MainLayoutContent = styled('div')({
   overflow: 'auto',
 });
 
-const MainLayout = () => (
-  <MainLayoutRoot>
-    <NavBar />
-    <MainLayoutWrapper>
-      <MainLayoutContainer>
-        <MainLayoutContent>
-          <Outlet />
-        </MainLayoutContent>
-      </MainLayoutContainer>
-    </MainLayoutWrapper>
-  </MainLayoutRoot>
-);
+const MainLayout = () => {
+  const [value, setValue] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  return (
+    <MainLayoutRoot>
+      <NavBar
+        value={value}
+        setValue={setValue}
+        selectedIndex={selectedIndex}
+        setSelectedIndex={setSelectedIndex}
+      />
+      <MainLayoutWrapper>
+        <MainLayoutContainer>
+          <MainLayoutContent>
+            <Outlet />
+          </MainLayoutContent>
+        </MainLayoutContainer>
+      </MainLayoutWrapper>
+    </MainLayoutRoot>
+  );
+};
 
 export default MainLayout;

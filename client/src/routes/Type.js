@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { LOGIN_ROUTE, PROFILE_ROUTE } from '../constant/routes';
 

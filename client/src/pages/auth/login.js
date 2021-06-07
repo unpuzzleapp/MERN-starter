@@ -35,7 +35,7 @@ const Login = ({ auth, actions }) => {
     setSubmitting(false);
   };
   return (
-    <>
+    <React.Fragment key="login-container">
       <Helmet>
         <title>Login | Starter</title>
       </Helmet>
@@ -173,7 +173,7 @@ const Login = ({ auth, actions }) => {
           </Formik>
         </Container>
       </ColumnContainer>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Box, Container, Grid } from '@material-ui/core';
 import AccountProfile from '../../components/profile/AccountProfile';
 import AccountProfileDetails from '../../components/profile/AccountProfileDetails';
 
 const Account = () => (
-  <>
+  <Fragment key="account">
     <Helmet>
       <title>Account | Material Kit</title>
     </Helmet>
@@ -27,7 +27,7 @@ const Account = () => (
         </Grid>
       </Container>
     </Box>
-  </>
+  </Fragment>
 );
 
 export default Account;

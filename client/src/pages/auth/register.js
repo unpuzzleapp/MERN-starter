@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -37,7 +37,7 @@ const Login = ({ auth, actions }) => {
     setSubmitting(false);
   };
   return (
-    <>
+    <Fragment key="register">
       <Helmet>
         <title>Register | Starter</title>
       </Helmet>
@@ -221,7 +221,7 @@ const Login = ({ auth, actions }) => {
           </Formik>
         </Container>
       </ColumnContainer>
-    </>
+    </Fragment>
   );
 };
 

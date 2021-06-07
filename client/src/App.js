@@ -1,4 +1,4 @@
-import './App.scss';
+import React from 'react';
 import axios from 'axios';
 import { useRoutes } from 'react-router-dom';
 import routes from './routes/Routes';
