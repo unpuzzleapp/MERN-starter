@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState, Fragment } from 'react';
@@ -12,19 +13,19 @@ import { loadingData } from './reducer';
 // import { getPuzzlepieces } from '../redux/actions/dataActions';
 
 const PuzzleTweet = (props) => {
-  const [puzzles, setPuzzles] = useState([]);
+  // const [puzzles, setPuzzles] = useState([]);
 
-  const fetchPuzzles = async () => {
-    try {
-      const res = await axios.get(`${AWS_CONFIG}/puzzle`);
-      setPuzzles(res.data);
-    } catch (err) {
-      console.log(`An error has occured ${err} ${puzzles}`);
-    }
-  };
+  // const fetchPuzzles = async () => {
+  //   try {
+  //     const res = await axios.get(`${AWS_CONFIG}/puzzle`);
+  //     setPuzzles(res.data);
+  //   } catch (err) {
+  //     setPuzzles([]);
+  //   }
+  // };
 
   useEffect(() => {
-    fetchPuzzles();
+    // fetchPuzzles();
     props.getPuzzlepieces();
   }, []);
   const { puzzlepieces, loading } = props.data;

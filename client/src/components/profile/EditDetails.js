@@ -39,10 +39,6 @@ const EditDetails = (props) => {
     });
   };
   const handleOpen = () => {
-    console.log('here', {
-      new: { ...componentState, open: true },
-      prev: componentState,
-    });
     setComponentState({ ...componentState, open: true });
     mapUserDetailsToState(props.credentials);
   };
@@ -69,7 +65,6 @@ const EditDetails = (props) => {
     handleClose();
   };
   const { classes } = props;
-  console.log({ props, componentState });
   return (
     <Fragment key="edit details">
       <MyButton
