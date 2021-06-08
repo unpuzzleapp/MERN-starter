@@ -21,7 +21,7 @@ jobs:
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       # Run npm install and build on our code
       - name: Frontend install
         run: yarn install --frozen-lockfile
