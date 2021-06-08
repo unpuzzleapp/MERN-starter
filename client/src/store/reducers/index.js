@@ -4,7 +4,7 @@ import login from '../../pages/auth/reducer';
 import list from '../../pages/list/reducer';
 import user from '../../pages/login/reducer';
 import UI from './uiReducer';
-import data from '../../pages/PuzzleTweet';
+import data from '../../pages/PuzzleTweet/reducer';
 
 const reducer = combineReducers({ login, list, user, UI, data });
 export default reducer;

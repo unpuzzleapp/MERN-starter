@@ -24,7 +24,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import Notifications from '../common/component/Notification';
-import PostPuzzlepiece from '../components/unpuzzle/postNew';
+import PostPuzzlepiece from '../components/unpuzzle/PostPuzzlepiece';
 import MyButton from '../common/component/Button';
 // Logo
 import Logo from './Logo';
@@ -385,7 +385,7 @@ const Navbar = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  authenticated: state.login.isSuccess,
+  authenticated: state.user.authenticated,
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(Navbar));

@@ -26,6 +26,17 @@ const loginSlice = createSlice({
         loading: true,
       };
     },
+    getUserData: (state) => {
+      return {
+        ...state,
+      };
+    },
+    registerUser: (state) => {
+      return {
+        ...state,
+        loading: true,
+      };
+    },
     likePuzzlePiece: (state, action) => {
       return {
         ...state,
@@ -46,10 +57,23 @@ const loginSlice = createSlice({
         ),
       };
     },
-    markNotificationRead: (state) => {
+    markNotificationsRead: (state) => {
       state.notifications.forEach((notification) => (notification.read = true));
       return {
         ...state,
+      };
+    },
+    uploadImage: (state) => {
+      return state;
+    },
+    logout: () => {
+      localStorage.removeItem('authToken');
+      return {
+        authenticated: false,
+        loading: false,
+        credentials: {},
+        likes: [],
+        notifications: [],
       };
     },
   },
@@ -60,7 +84,11 @@ export const {
   loadingUser,
   likePuzzlePiece,
   unLikePuzzlePiece,
-  markNotificationRead,
+  markNotificationsRead,
+  registerUser,
+  getUserData,
+  uploadImage,
+  logout,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

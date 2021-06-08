@@ -7,6 +7,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 // Redux
 import { connect } from 'react-redux';
 import MyButton from '../../common/component/Button';
+import { doLike, doUnLike } from '../../pages/PuzzleTweet/reducer';
 // import {
 //   likePuzzlepiece,
 //   unlikePuzzlepiece,
@@ -53,8 +54,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  likePuzzlepiece: () => {},
-  unlikePuzzlepiece: () => {},
+  likePuzzlepiece: doLike,
+  unlikePuzzlepiece: doUnLike,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(LikeButton);

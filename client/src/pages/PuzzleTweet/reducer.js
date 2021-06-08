@@ -8,6 +8,7 @@ const puzzleSlice = createSlice({
     puzzlepieces: [],
     puzzlepiece: {},
     loading: false,
+    actionLoading: false,
   },
   reducers: {
     loadingData: (state) => {
@@ -23,30 +24,71 @@ const puzzleSlice = createSlice({
         loading: false,
       };
     },
-    likePuzzlePiece: (state, action) => {
-      const index = state.puzzlepieces.findIndex(
-        (puzzlepiece) =>
-          puzzlepiece.puzzlepieceId === action.payload.puzzlepieceId,
-      );
-      state.puzzlepieces[index] = action.payload;
-      if (state.puzzlepiece.puzzlepieceId === action.payload.puzzlepieceId) {
-        state.puzzlepiece = action.payload;
-      }
+    getPuzzlePiece: (state) => {
+      return state;
+    },
+    setPuzzlePiece: (state, action) => {
       return {
         ...state,
+        puzzlepiece: action.payload,
       };
     },
-    unLikePuzzlePiece: (state, action) => {
+    doLike: (state) => {
+      return {
+        ...state,
+        actionLoading: true,
+      };
+    },
+    doUnLike: (state) => {
+      return {
+        ...state,
+        actionLoading: true,
+      };
+    },
+    unLikeListPuzzlePiece: (state, action) => {
       const index = state.puzzlepieces.findIndex(
         (puzzlepiece) =>
           puzzlepiece.puzzlepieceId === action.payload.puzzlepieceId,
       );
-      state.puzzlepieces[index] = action.payload;
+      const latestPuzzlepieces = state.puzzlepieces.map((e, i) => {
+        if (index === i) {
+          return action.payload;
+        }
+        return e;
+      });
+      let currentPuzzlePiece = state.puzzlepiece;
       if (state.puzzlepiece.puzzlepieceId === action.payload.puzzlepieceId) {
-        state.puzzlepiece = action.payload;
+        currentPuzzlePiece = action.payload;
       }
+
       return {
         ...state,
+        puzzlepieces: latestPuzzlepieces,
+        puzzlepiece: currentPuzzlePiece,
+        actionLoading: false,
+      };
+    },
+    likeListPuzzlePiece: (state, action) => {
+      const index = state.puzzlepieces.findIndex(
+        (puzzlepiece) =>
+          puzzlepiece.puzzlepieceId === action.payload.puzzlepieceId,
+      );
+      const latestPuzzlepieces = state.puzzlepieces.map((e, i) => {
+        if (index === i) {
+          return action.payload;
+        }
+        return e;
+      });
+      let currentPuzzlePiece = state.puzzlepiece;
+      if (state.puzzlepiece.puzzlepieceId === action.payload.puzzlepieceId) {
+        currentPuzzlePiece = action.payload;
+      }
+
+      return {
+        ...state,
+        puzzlepieces: latestPuzzlepieces,
+        puzzlepiece: currentPuzzlePiece,
+        actionLoading: false,
       };
     },
     deletePuzzlePiece: (state, action) => {
@@ -79,11 +121,15 @@ const puzzleSlice = createSlice({
 export const {
   loadingData,
   setPuzzlePieces,
-  likePuzzlePiece,
-  unLikePuzzlePiece,
+  unLikeListPuzzlePiece,
+  likeListPuzzlePiece,
   deletePuzzlePiece,
   postPuzzlePiece,
   submitComment,
+  setPuzzlePiece,
+  getPuzzlePiece,
+  doLike,
+  doUnLike,
 } = puzzleSlice.actions;
 
 export default puzzleSlice.reducer;

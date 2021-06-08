@@ -8,6 +8,7 @@ import { AWS_CONFIG } from '../../constant/apiRoute';
 import Puzzlepiece from '../../components/unpuzzle/Puzzlepiece';
 import Profile from '../../components/profile/Profile';
 import PuzzlepieceSkeleton from '../../common/component/PuzzlepieceSkeleton';
+import { loadingData } from './reducer';
 // import { getPuzzlepieces } from '../redux/actions/dataActions';
 
 const PuzzleTweet = (props) => {
@@ -24,9 +25,9 @@ const PuzzleTweet = (props) => {
 
   useEffect(() => {
     fetchPuzzles();
-    // props.getPuzzlepieces();
+    props.getPuzzlepieces();
   }, []);
-  const { puzzlepieces = [], loading } = props.data;
+  const { puzzlepieces, loading } = props.data;
   const recentPuzzlepiecesMarkup = !loading ? (
     puzzlepieces.map((puzzlepiece) => (
       <Puzzlepiece key={puzzlepiece.puzzlepieceId} puzzlepiece={puzzlepiece} />
@@ -49,8 +50,8 @@ const PuzzleTweet = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.data || {},
+  data: state.data,
 });
-export default connect(mapStateToProps, { getPuzzlepieces: () => {} })(
+export default connect(mapStateToProps, { getPuzzlepieces: loadingData })(
   PuzzleTweet,
 );

@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // MUI Stuff
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { connect } from 'react-redux';
+import { registerUser } from '../login/reducer';
 // import { signupUser } from '../redux/actions/userActions';
 
 const AppIcon = '/static/upLogo.svg';
@@ -18,6 +19,7 @@ const styles = (theme) => ({
 });
 
 const Signup = (props) => {
+  const navigate = useNavigate();
   const [componentState, setComponentState] = useState({
     email: '',
     password: '',
@@ -26,8 +28,19 @@ const Signup = (props) => {
     errors: {},
   });
   useEffect(() => {
+    if (props.user.authenticated) {
+      navigate('/'); // redirect to homepage after login
+    }
+  }, [props.user.authenticated]);
+  useEffect(() => {
     if (props.UI.errors) {
-      setComponentState({ ...componentState, errors: props.UI.errors });
+      setComponentState({
+        ...componentState,
+        errors: {
+          ...componentState.errors,
+          general: props.UI.errors,
+        },
+      });
     }
   }, [props.UI.errors, props.UI.loading]);
 
@@ -147,7 +160,7 @@ const mapStateToProps = (state) => ({
   UI: state.UI || {},
 });
 
-export default connect(mapStateToProps, { signupUser: () => {} })(
+export default connect(mapStateToProps, { signupUser: registerUser })(
   withStyles(styles)(Signup),
 );
 

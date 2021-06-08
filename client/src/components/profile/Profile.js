@@ -21,6 +21,7 @@ import { connect } from 'react-redux';
 import ProfileSkeleton from '../../common/component/ProfileSkeleton';
 import MyButton from '../../common/component/Button';
 import EditDetails from './EditDetails';
+import { logout, uploadImage } from '../../pages/login/reducer';
 
 const styles = () => ({
   paper: {
@@ -192,7 +193,7 @@ const mapStateToProps = (state) => ({
   user: state.user || {},
 });
 
-const mapActionsToProps = { logoutUser: () => {}, uploadImage: () => {} };
+const mapActionsToProps = { logoutUser: logout, uploadImage };
 
 Profile.propTypes = {
   logoutUser: PropTypes.func.isRequired,

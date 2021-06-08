@@ -20,6 +20,9 @@ import MyButton from '../../common/component/Button';
 import LikeButton from './LikeButton';
 import Comments from './Comments';
 import CommentForm from './CommentForm';
+import { getPuzzlePiece } from '../../pages/PuzzleTweet/reducer';
+import { clearError } from '../../store/reducers/uiReducer';
+// import { getPuzzlepiece } from './';
 // import { getPuzzlepiece, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
@@ -98,7 +101,6 @@ const PuzzlepieceDialog = (props) => {
     },
     UI: { loading },
   } = props;
-
   const dialogMarkup = loading ? (
     <div className={classes.spinnerDiv}>
       <CircularProgress size={50} thickness={2} />
@@ -171,8 +173,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-  getPuzzlepiece: () => {},
-  clearErrors: () => {},
+  getPuzzlepiece: getPuzzlePiece,
+  clearErrors: clearError,
 };
 
 export default connect(

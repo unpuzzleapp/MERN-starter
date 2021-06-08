@@ -47,7 +47,7 @@ const EditDetails = (props) => {
   useEffect(() => {
     const { credentials } = props;
     mapUserDetailsToState(credentials);
-  });
+  }, []);
   const handleChange = (event) => {
     setComponentState({
       ...componentState,
