@@ -23,9 +23,12 @@ jobs:
         with:
           node-version: 12.x
       # Run npm install and build on our code
-      - run: cd client
-      - run: yarn install --frozen-lockfile
-      - run: yarn run build --if-present
+      - name: Frontend install
+        run: yarn install --frozen-lockfile
+        working-directory: client
+      - name: Frontend build
+        run: yarn run build --if-present
+        working-directory: client
       # Deploy to Netlify using our production secrets
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
