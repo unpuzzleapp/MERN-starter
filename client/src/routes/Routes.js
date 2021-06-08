@@ -46,6 +46,11 @@ const routes = [
     ],
   },
   {
+    path: '/users',
+    element: <AuthLayout />,
+    children: [{ path: '*', element: <PuzzleTweet /> }],
+  },
+  {
     path: '/',
     element: <AuthLayout />,
     children: [
