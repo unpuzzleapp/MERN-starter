@@ -1,9 +1,12 @@
 html,
 body {
+  
+  background-color: white;
+}
+body, * {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Montserrat",
     "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fire Sans", "Droid Sans",
     "Helvetica Neue", sans-serif;
-  background-color: white;
 }
 .container {
   margin: auto;
