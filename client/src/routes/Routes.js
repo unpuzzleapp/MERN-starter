@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { ProtectedRoute, AdminOnlyRoute } from './Type';
 import AuthLayout from '../layout/Auth';
 import DashboardLayout from '../layout/DashboardLayout';
-// import Login from '../pages/auth/login';
+//  import Login from '../pages/auth/login';
 // import Register from '../pages/auth/register';
 import Login from '../pages/login';
 import Register from '../pages/signup';
