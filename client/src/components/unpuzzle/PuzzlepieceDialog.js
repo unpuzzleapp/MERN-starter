@@ -22,8 +22,6 @@ import Comments from './Comments';
 import CommentForm from './CommentForm';
 import { getPuzzlePiece } from '../../pages/PuzzleTweet/reducer';
 import { clearError } from '../../store/reducers/uiReducer';
-// import { getPuzzlepiece } from './';
-// import { getPuzzlepiece, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
   ...theme.themeStyle,

@@ -12,6 +12,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 // Icons
 import EditIcon from '@material-ui/icons/Edit';
+import { editProfile } from '../../pages/login/reducer';
 // import { editUserDetails } from '../../redux/actions/userActions';
 import MyButton from '../../common/component/Button';
 
@@ -38,6 +39,10 @@ const EditDetails = (props) => {
     });
   };
   const handleOpen = () => {
+    console.log('here', {
+      new: { ...componentState, open: true },
+      prev: componentState,
+    });
     setComponentState({ ...componentState, open: true });
     mapUserDetailsToState(props.credentials);
   };
@@ -64,6 +69,7 @@ const EditDetails = (props) => {
     handleClose();
   };
   const { classes } = props;
+  console.log({ props, componentState });
   return (
     <Fragment key="edit details">
       <MyButton
@@ -133,6 +139,6 @@ const mapStateToProps = (state) => ({
   credentials: state.user.credentials,
 });
 
-export default connect(mapStateToProps, { editUserDetails: () => {} })(
+export default connect(mapStateToProps, { editUserDetails: editProfile })(
   withStyles(styles)(EditDetails),
 );

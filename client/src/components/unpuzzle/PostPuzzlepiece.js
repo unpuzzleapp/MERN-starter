@@ -13,6 +13,8 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 // Redux
 import { connect } from 'react-redux';
+import { postPuzzlePieceStart } from '../../pages/PuzzleTweet/reducer';
+import { clearError } from '../../store/reducers/uiReducer';
 // import { postPuzzlepiece, clearErrors } from '../../redux/actions/dataActions';
 import MyButton from '../../common/component/Button';
 
@@ -144,6 +146,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  postPuzzlepiece: () => {},
-  clearErrors: () => {},
+  postPuzzlepiece: postPuzzlePieceStart,
+  clearErrors: clearError,
 })(withStyles(styles)(PostPuzzlepiece));

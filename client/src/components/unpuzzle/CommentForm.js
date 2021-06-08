@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 // Redux stuff
 import { connect } from 'react-redux';
+import { submitCommentStart } from '../../pages/PuzzleTweet/reducer';
 // import { submitComment } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
@@ -74,6 +75,6 @@ const mapStateToProps = (state) => ({
   authenticated: state.user.authenticated,
 });
 
-export default connect(mapStateToProps, { submitComment: () => {} })(
-  withStyles(styles)(CommentForm),
-);
+export default connect(mapStateToProps, {
+  submitComment: (id, data) => submitCommentStart({ id, data }),
+})(withStyles(styles)(CommentForm));

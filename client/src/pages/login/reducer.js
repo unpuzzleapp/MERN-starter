@@ -37,6 +37,11 @@ const loginSlice = createSlice({
         loading: true,
       };
     },
+    editProfile: (state) => {
+      return {
+        ...state,
+      };
+    },
     likePuzzlePiece: (state, action) => {
       return {
         ...state,
@@ -89,6 +94,7 @@ export const {
   getUserData,
   uploadImage,
   logout,
+  editProfile,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

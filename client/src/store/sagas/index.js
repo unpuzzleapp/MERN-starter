@@ -20,12 +20,14 @@ import {
   registerUser,
   getUserData,
   uploadImage,
+  editProfile,
 } from '../../pages/login/reducer';
 import {
   unpuzzleLoginSaga,
   unpuzzleRegisterSaga,
   unpuzzleUserData,
   unpuzzleUploadImageSaga,
+  unpuzzleUpdateProfileSaga,
 } from '../../pages/login/saga';
 
 import {
@@ -33,12 +35,18 @@ import {
   getPuzzlePiece,
   doLike,
   doUnLike,
+  deletePuzzlePieceStart,
+  submitCommentStart,
+  postPuzzlePieceStart,
 } from '../../pages/PuzzleTweet/reducer';
 import {
   getPuzzlePiecesSaga,
   getPuzzlePieceSaga,
   likePuzzlePiecesSaga,
   unLikePuzzlePiecesSaga,
+  deletePuzzlePiecesSaga,
+  submitCommentPuzzlePiecesSaga,
+  postPuzzlePieceSaga,
 } from '../../pages/PuzzleTweet/saga';
 
 export default function* watcherSagas() {
@@ -52,9 +60,13 @@ export default function* watcherSagas() {
   yield takeLatest(loadingUser.type, unpuzzleLoginSaga);
   yield takeLatest(registerUser.type, unpuzzleRegisterSaga);
   yield takeLatest(getUserData.type, unpuzzleUserData);
+  yield takeLatest(editProfile.type, unpuzzleUpdateProfileSaga);
   yield takeLatest(uploadImage.type, unpuzzleUploadImageSaga);
   yield takeLatest(loadingData.type, getPuzzlePiecesSaga);
   yield takeLatest(getPuzzlePiece.type, getPuzzlePieceSaga);
   yield takeLatest(doLike.type, likePuzzlePiecesSaga);
   yield takeLatest(doUnLike.type, unLikePuzzlePiecesSaga);
+  yield takeLatest(deletePuzzlePieceStart.type, deletePuzzlePiecesSaga);
+  yield takeLatest(submitCommentStart.type, submitCommentPuzzlePiecesSaga);
+  yield takeLatest(postPuzzlePieceStart.type, postPuzzlePieceSaga);
 }

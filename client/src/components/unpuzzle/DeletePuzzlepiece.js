@@ -11,7 +11,7 @@ import DeleteOutline from '@material-ui/icons/DeleteOutline';
 
 import { connect } from 'react-redux';
 import MyButton from '../../common/component/Button';
-// import { deletePuzzlepiece } from '../../redux/actions/dataActions';
+import { deletePuzzlePieceStart } from '../../pages/PuzzleTweet/reducer';
 
 const styles = {
   deleteButton: {
@@ -67,6 +67,6 @@ const DeletePuzzlepiece = (props) => {
   );
 };
 
-export default connect(null, { deletePuzzlepiece: () => {} })(
+export default connect(null, { deletePuzzlepiece: deletePuzzlePieceStart })(
   withStyles(styles)(DeletePuzzlepiece),
 );

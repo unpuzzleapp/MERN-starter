@@ -91,6 +91,9 @@ const puzzleSlice = createSlice({
         actionLoading: false,
       };
     },
+    deletePuzzlePieceStart: (state) => {
+      return state;
+    },
     deletePuzzlePiece: (state, action) => {
       const index = state.puzzlepieces.findIndex(
         (puzzlepiece) => puzzlepiece.puzzlepieceId === action.payload,
@@ -100,10 +103,20 @@ const puzzleSlice = createSlice({
         ...state,
       };
     },
+    postPuzzlePieceStart: (state) => {
+      return {
+        ...state,
+      };
+    },
     postPuzzlePiece: (state, action) => {
       return {
         ...state,
         puzzlepieces: [action.payload, ...state.puzzlepieces],
+      };
+    },
+    submitCommentStart: (state) => {
+      return {
+        ...state,
       };
     },
     submitComment: (state, action) => {
@@ -124,7 +137,10 @@ export const {
   unLikeListPuzzlePiece,
   likeListPuzzlePiece,
   deletePuzzlePiece,
+  deletePuzzlePieceStart,
+  postPuzzlePieceStart,
   postPuzzlePiece,
+  submitCommentStart,
   submitComment,
   setPuzzlePiece,
   getPuzzlePiece,
