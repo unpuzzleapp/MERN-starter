@@ -10,7 +10,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-// Icons
+//  Icons
 import EditIcon from '@material-ui/icons/Edit';
 import { editProfile } from '../../pages/login/reducer';
 // import { editUserDetails } from '../../redux/actions/userActions';
