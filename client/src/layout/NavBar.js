@@ -79,9 +79,6 @@ const styles = (theme) => ({
     background: '#fefefe',
     zIndex: theme.zIndex.modal + 1,
   },
-  toolbar: {
-    justifyContent: 'space-between',
-  },
   menu: {
     backgroundColor: '#fefefe',
     borderRadius: '0',

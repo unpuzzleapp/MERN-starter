@@ -30,17 +30,18 @@ const EditDetails = (props) => {
     location: '',
     open: false,
   });
-  const mapUserDetailsToState = (credentials) => {
+  const mapUserDetailsToState = (credentials, other = {}) => {
     setComponentState({
       ...componentState,
+      ...other,
       bio: credentials.bio ? credentials.bio : '',
       website: credentials.website ? credentials.website : '',
       location: credentials.location ? credentials.location : '',
     });
   };
   const handleOpen = () => {
-    setComponentState({ ...componentState, open: true });
-    mapUserDetailsToState(props.credentials);
+    // setComponentState({ ...componentState, open: true });
+    mapUserDetailsToState(props.credentials, { open: true });
   };
   const handleClose = () => {
     setComponentState({ ...componentState, open: false });

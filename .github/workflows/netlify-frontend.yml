@@ -3,7 +3,7 @@ name: Frontend Deployment on Netlify
 on:
   push:
     branches:
-      - feature/migration
+      - dev
     paths:
       - 'client/**'
 

@@ -64,14 +64,14 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '-5em',
     right: '3.2em',
     backgroundColor: 'white',
-    width: '24em',
+    width: '25em',
     borderRadius: '0.5em',
     [theme.breakpoints.down('xs')]: {
-      width: '18em',
+      width: '19em',
       marginTop: '-3.5em',
     },
     [theme.breakpoints.down('md')]: {
-      width: '18em',
+      width: '19em',
       marginTop: '-4.5em',
       right: '1.5em',
     },

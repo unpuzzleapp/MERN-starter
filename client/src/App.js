@@ -6,6 +6,7 @@ import Themer from './theme/index';
 import Footer from './common/component/Footer';
 import requestInterceptor from './utils/axiosInterceptor';
 import { DEFAULT_AXIOS_URL } from './constant/env';
+import Navbar from './layout/NavBar';
 import './App.css';
 
 axios.defaults.baseURL = DEFAULT_AXIOS_URL;
@@ -18,6 +19,12 @@ function App() {
   const routing = useRoutes(routes);
   return (
     <Themer id="theme-selector">
+      <Navbar
+        value={value}
+        setValue={setValue}
+        selectedIndex={selectedIndex}
+        setSelectedIndex={setSelectedIndex}
+      />
       {routing}
       <Footer
         value={value}
