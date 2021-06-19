@@ -21,7 +21,7 @@ const styles = (theme) => ({
 });
 
 const Comments = (props) => {
-  const { comments, classes } = props;
+  const { comments = [], classes } = props;
   return (
     <Grid container>
       {comments.map((comment, index) => {
