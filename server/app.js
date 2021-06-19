@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const morganLogger = require('morgan');
+const cors = require('cors')
 const compression = require('compression');
 const helmet = require('helmet');
 require('dotenv').config()
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(compression()); //Compress all routes
 app.use(helmet());
+app.use(cors())
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT ,DELETE');

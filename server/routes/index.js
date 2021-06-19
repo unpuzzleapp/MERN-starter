@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Auth = require('./Auth');
+const PuzzlePiece = require('./PuzzlePiece');
 
-router.use('/auth', Auth)
+router.use('/', Auth)
+router.use('/puzzlepiece', PuzzlePiece)
 router.get('/', function(req, res, next) {
   // const err = new Error('This is root route!') 
   // err.status = 404;  

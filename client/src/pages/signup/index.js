@@ -54,7 +54,7 @@ const Signup = (props) => {
       email: componentState.email,
       password: componentState.password,
       confirmPassword: componentState.confirmPassword,
-      handle: componentState.handle,
+      role: 'owner',
     };
     props.signupUser(newUserData, props.history);
   };

@@ -18,7 +18,7 @@ import {
 
 const getPuzzlepieces = async (payload) => {
   const content = { ...payload };
-  const data = await axios.get('/puzzlepieces', content);
+  const data = await axios.get('/puzzlepiece', content);
   return data;
 };
 const getPuzzlepiece = async (payload) => {
@@ -50,7 +50,7 @@ function* getPuzzlePieceSaga(action) {
     yield put(loadingUI());
     const response = yield getPuzzlepiece(action.payload);
     if (response.data) {
-      yield put(setPuzzlePiece(response.data));
+      yield put(setPuzzlePiece(response.data.data));
       yield put(clearError());
     } else {
       yield put(setPuzzlePiece({}));
@@ -64,7 +64,7 @@ function* postPuzzlePieceSaga(action) {
     yield put(loadingUI());
     const response = yield postPuzzle(action.payload);
     if (response.data) {
-      yield put(postPuzzlePiece(response.data));
+      yield put(postPuzzlePiece(response.data.data));
       yield put(clearError());
     } else {
       yield put(setError(response.message));
@@ -77,7 +77,7 @@ function* getPuzzlePiecesSaga(action) {
   try {
     const response = yield getPuzzlepieces(action.payload);
     if (response.data) {
-      yield put(setPuzzlePieces(response.data));
+      yield put(setPuzzlePieces(response.data.data));
     } else {
       yield put(setPuzzlePieces([]));
     }
@@ -87,21 +87,21 @@ function* getPuzzlePiecesSaga(action) {
 }
 function* deletePuzzlePiecesSaga(action) {
   const response = yield deletePuzzle(action.payload);
-  yield put(deletePuzzlePiece(response.data));
+  yield put(deletePuzzlePiece(response.data.data));
 }
 function* likePuzzlePiecesSaga(action) {
   const response = yield likePuzzle(action.payload);
-  yield put(likeListPuzzlePiece(response.data));
-  yield put(likePuzzlePiece(response.data));
+  yield put(likeListPuzzlePiece(response.data.data));
+  yield put(likePuzzlePiece(response.data.data));
 }
 function* unLikePuzzlePiecesSaga(action) {
   const response = yield unLikePuzzle(action.payload);
-  yield put(unLikeListPuzzlePiece(response.data));
-  yield put(unLikePuzzlePiece(response.data));
+  yield put(unLikeListPuzzlePiece(response.data.data));
+  yield put(unLikePuzzlePiece(response.data.data));
 }
 function* submitCommentPuzzlePiecesSaga(action) {
   const response = yield submitPuzzleComment(action.payload);
-  yield put(submitComment(response.data));
+  yield put(submitComment(response.data.data));
   yield put(clearError());
 }
 export {

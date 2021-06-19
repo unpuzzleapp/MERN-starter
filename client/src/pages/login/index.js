@@ -24,7 +24,7 @@ const styles = (theme) => ({
 const Login = (props) => {
   const navigate = useNavigate();
   const [componentState, setComponentState] = useState({
-    email: '1@user.com',
+    email: 'piyushtest@test.com',
     password: '123456',
     errors: {},
   });
@@ -50,6 +50,7 @@ const Login = (props) => {
     const userData = {
       email: componentState.email,
       password: componentState.password,
+      role: 'admin',
     };
     props.loginUser(userData);
   };
