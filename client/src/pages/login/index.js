@@ -24,7 +24,7 @@ const styles = (theme) => ({
 const Login = (props) => {
   const navigate = useNavigate();
   const [componentState, setComponentState] = useState({
-    email: 'piyushtest@test.com',
+    email: '1@user.com',
     password: '123456',
     errors: {},
   });
