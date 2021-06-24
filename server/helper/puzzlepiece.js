@@ -2,8 +2,8 @@ const mergeCreatedBy = (obj) => {
     const {createdBy, ...newProps} = obj;
     const returner = {
         ...newProps,
-        userHandle: createdBy?.handle,
-        userImage: createdBy?.imageUrl,
+        userHandle: createdBy.handle,
+        userImage: createdBy.imageUrl,
     }
     return returner;
 }
@@ -17,14 +17,14 @@ const mergeComments = (obj) => {
     const {userId, ...newProps} = obj;
     const returner = {
         ...newProps,
-        userHandle: userId?.handle,
-        userImage: userId?.imageUrl,
+        userHandle: userId.handle,
+        userImage: userId.imageUrl,
     }
     return returner;
 }
 const mergeCommentsList = (obj) => {
     const newObj = {...obj};
-    newObj.comments = obj?.comments.map(element => {
+    newObj.comments = obj.comments.map(element => {
         return mergeComments(element);
     })
     return newObj;

@@ -55,6 +55,7 @@ This folder will store all your workflows which require automation
     - ...rest are utility files
 
 You can find more details in the below links,
+- [Change Log](docs/changelog.md)
 - [Project Details](docs/project.md)
 - [Getting started](docs/getting-started.md)
 - [Client Getting started](docs/client-getting-started.md)
