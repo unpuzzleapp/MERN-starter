@@ -85,7 +85,7 @@ export default function Home() {
               Unpuzzle
             </Typography>
             <Typography variant="h3" align="center">
-              Collect and Connect Puzzle Pieces
+              Collect and Connect Puzzle Pieces!
             </Typography>
             <Grid
               container
